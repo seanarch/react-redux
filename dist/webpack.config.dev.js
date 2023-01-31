@@ -1,15 +1,17 @@
-const path = require("path");
+"use strict";
+
+var path = require("path");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "app.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist")
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 9000,
+    port: 9000
   },
   mode: "development",
-  devtool: "source-map",
+  devtool: "source-map"
 };
