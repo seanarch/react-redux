@@ -1,39 +1,40 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 var _configureStore = _interopRequireDefault(require("./store/configureStore"));
 
-var actions = _interopRequireWildcard(require("./store/bugs"));
+var _bugs = require("./store/bugs");
 
 var _projects = require("./store/projects");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+var _users = require("./store/users");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var store = (0, _configureStore["default"])();
-store.subscribe(function () {
-  console.log("Store changed!");
-});
-store.dispatch(actions.bugAdded({
-  description: 'Bug 1'
-}));
-store.dispatch(actions.bugAdded({
-  description: 'Bug 2'
-}));
-store.dispatch(actions.bugAdded({
-  description: 'Bug 3'
-}));
-store.dispatch(actions.bugResolved({
-  id: 1
-}));
-store.dispatch((0, _projects.projectAdded)({
-  name: 'New Project'
-}));
-console.log(store.getState()); // import store from "./store";
+store.dispatch({
+  type: "error",
+  payload: {
+    message: "An error occured."
+  }
+}); // store.subscribe(() => {
+//     console.log("Store changed!");
+// })
+// store.dispatch((dispatch, getState) => {
+//     dispatch({ type: "bugsReceived", bugs: [1, 2, 3] })
+//     console.log(getState());
+// })
+// store.dispatch(userAdded({ name: "User 1" }))
+// store.dispatch(userAdded({ name: "User 2" }))
+// store.dispatch(bugAdded({ description: 'Bug 1' }))
+// store.dispatch(bugAdded({ description: 'Bug 2' }))
+// store.dispatch(bugAdded({ description: 'Bug 3' }))
+// store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }))
+// store.dispatch(bugResolved({ id: 1 }))
+// store.dispatch(projectAdded({ name: 'New Project' }))
+// const unresolvedBugs = getUnresolvedBugs(store.getState());
+// console.log(unresolvedBugs)
+// console.log(getBugsByUser(1)(store.getState()))
+// import store from "./store";
 // import * as actions from "./actionTypes";
 // import { bugAdded, bugResolved } from "./actions";
 // const unsubscribe = store.subscribe(() => {
